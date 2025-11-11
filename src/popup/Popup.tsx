@@ -69,25 +69,9 @@ export default function Popup() {
     }
   };
 
-  /**
-   * @deprecated
-   */
-  // const _handleConvert = () => {
-  //   const match = selectedText.match(/(\d+(\.\d+)?)\s?(g|kg|lb|oz)/i);
-  //   if (match) {
-  //     const value = parseFloat(match[1]);
-  //     const unit = match[3].toLowerCase();
-  //     const targetUnit = unitMap[unit];
-  //     const result = convertUnit(value, unit, targetUnit);
-  //     setConverted(`${result.toFixed(2)} ${targetUnit}`);
-  //   } else {
-  //     setConverted("No valid unit detected");
-  //   }
-  // };
-
   return (
     <div className="bg-gray-100 w-64 flex flex-col gap-2 p-4 pb-7 rounded-sm">
-      <h1 className="text-2xl font-bold text-center">Universal Converter</h1>
+      <h1 className="text-xl font-bold text-center">Universal Converter</h1>
       <h3 className="mt-2 text-xs text-slate-600">Convert from</h3>
       <div className="flex justify-between">
         <input
