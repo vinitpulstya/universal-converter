@@ -7,7 +7,10 @@ import {
   type Unit,
 } from "../utils/units";
 import convert from "convert-units";
+import { Input } from "@heroui/input";
+import UnitsAutocomplete from "../components/UnitsAutocomplete";
 import Select from "../components/Select";
+import { Button } from "@heroui/react";
 
 type ToUnitState = {
   options: Unit[];
@@ -70,24 +73,23 @@ export default function Popup() {
   };
 
   return (
-    <div className="bg-gray-100 w-64 flex flex-col gap-2 p-4 pb-7 rounded-sm">
+    <div className="bg-gray-100 w-64 h-103 flex flex-col gap-2 p-4 pb-7 rounded-sm">
       <h1 className="text-xl font-bold text-center">Universal Converter</h1>
       <h3 className="mt-2 text-xs text-slate-600">Convert from</h3>
-      <div className="flex justify-between">
-        <input
-          className="text-sm w-30 p-1 border-1 rounded-md"
+      <div className="flex justify-between gap-1">
+        <Input
           type="text"
+          variant="underlined"
           value={text}
           onChange={(e) => handleTextChange(e.target.value)}
         />
-        <Select
+        <UnitsAutocomplete
           value={fromUnit || Units[0]}
-          onChange={(e) => {
-            const fromUnit = e.target.value as Unit;
+          onChange={(unit) => {
+            const fromUnit = unit as Unit;
             setFromUnit(fromUnit);
             handleToUnits(fromUnit);
           }}
-          options={Units}
         />
       </div>
       <div className="flex justify-between">
@@ -100,15 +102,12 @@ export default function Popup() {
               value: e.target.value as Unit,
             }))
           }
-          options={toUnitState.options}
+          options={toUnitState.options.sort()}
         />
       </div>
-      <button
-        className="bg-blue-500 py-1 px-2 rounded hover:cursor-pointer"
-        onClick={handleConvert}
-      >
+      <Button variant="shadow" color="primary" onPress={handleConvert}>
         Convert
-      </button>
+      </Button>
       <h2 className="text-lg">{converted}</h2>
     </div>
   );
