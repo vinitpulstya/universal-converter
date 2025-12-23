@@ -179,7 +179,7 @@ export function splitNumberAndUnit(input: string): {
 } {
   // Simplified regex that handles both numbers with and without commas
   const regex = /^\s*(\d+(?:,\d{3})*(?:\.\d+)?)\s*(.+)?$/;
-  const m = input.match(regex);
+  const m = input.toLowerCase().match(regex);
 
   if (!m) return { rawNumber: null, unitPart: input.trim() };
 

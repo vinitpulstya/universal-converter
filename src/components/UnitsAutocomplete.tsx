@@ -4,7 +4,7 @@ import {
   AutocompleteSection,
 } from "@heroui/react";
 import { UnitGroups } from "../utils/units";
-import { useState, type Key } from "react";
+import { useEffect, useState, type Key } from "react";
 
 type UnitsAutocompleteProps = {
   value: string;
@@ -21,6 +21,10 @@ export default function UnitsAutocomplete({
     setInputValue(unit ? (unit as string) : "");
     onChange(unit);
   };
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   return (
     <Autocomplete
