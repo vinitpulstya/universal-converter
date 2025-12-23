@@ -10,7 +10,7 @@ import convert from "convert-units";
 import { Input } from "@heroui/input";
 import UnitsAutocomplete from "../components/UnitsAutocomplete";
 import Select from "../components/Select";
-import { Button } from "@heroui/react";
+import { Button, Chip } from "@heroui/react";
 
 type ToUnitState = {
   options: Unit[];
@@ -28,9 +28,10 @@ export default function Popup() {
 
   const handleTextChange = (text: string) => {
     const detectedUnit = extractUnit(text);
-    setFromUnit(detectedUnit ? detectedUnit : Units[0]);
+    const fallbackUnit = fromUnit ? fromUnit : Units[0];
+    setFromUnit(detectedUnit ? detectedUnit : fallbackUnit);
     setText(text);
-    handleToUnits(detectedUnit);
+    handleToUnits(detectedUnit || fallbackUnit);
   };
 
   const handleToUnits = (fromUnit: Unit | null) => {
@@ -61,7 +62,7 @@ export default function Popup() {
       if (rawNumber) {
         const value = parseFloat(rawNumber);
         const result = convertUnit(value, fromUnit, toUnit);
-        setConverted(`${result.toFixed(2)} ${toUnit}`);
+        setConverted(`${result.toFixed(2)}`);
       } else {
         setConverted("No valid unit detected");
       }
@@ -75,7 +76,7 @@ export default function Popup() {
   return (
     <div className="bg-gray-100 w-64 h-103 flex flex-col gap-2 p-4 pb-7 rounded-sm">
       <h1 className="text-xl font-bold text-center">Universal Converter</h1>
-      <h3 className="mt-2 text-xs text-slate-600">Convert from</h3>
+      <h3 className="mt-2 text-xs text-slate-600">From</h3>
       <div className="flex justify-between gap-1">
         <Input
           type="text"
@@ -93,7 +94,7 @@ export default function Popup() {
         />
       </div>
       <div className="flex justify-between">
-        <h3 className="mt-2 text-xs text-slate-600">Convert to unit</h3>
+        <h3 className="mt-2 text-xs text-slate-600">To</h3>
         <Select
           value={toUnitState.value || toUnitState.options[0]}
           onChange={(e) =>
@@ -108,7 +109,14 @@ export default function Popup() {
       <Button variant="shadow" color="primary" onPress={handleConvert}>
         Convert
       </Button>
-      <h2 className="text-lg">{converted}</h2>
+      <h2 className="text-lg text-slate-700">
+        {converted}
+        {converted && toUnitState.value && (
+          <Chip variant="flat" className="ml-1">
+            {toUnitState.value}
+          </Chip>
+        )}
+      </h2>
     </div>
   );
 }
