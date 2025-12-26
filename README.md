@@ -29,3 +29,7 @@ universal-converter/
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Third-Party Licenses
+
+This project uses several open-source libraries. See [ATTRIBUTION.md](ATTRIBUTION.md) for complete third-party license information.
