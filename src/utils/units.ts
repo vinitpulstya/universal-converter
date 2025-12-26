@@ -10,7 +10,7 @@ export const UnitGroups = {
   Power: ["W", "mW", "kW", "MW", "GW"],
   Pressure: ["Pa", "hPa", "kPa", "MPa", "bar", "torr", "psi", "ksi"],
   Volume: ["ml", "l", "m3", "gal", "qt", "pnt", "cup"],
-  Speed: ["m/s", "km/h", "ft/s"],
+  Speed: ["m/s", "km/h", "ft/s", "m/h", "knot"],
   // ... add others if needed
 } as const;
 
@@ -51,6 +51,7 @@ const unitAliases: Record<string, Unit> = {
   kilometres: "km",
   centimeter: "cm",
   centimeters: "cm",
+  cms: "cm",
   millimeter: "mm",
   millimeters: "mm",
   inch: "in",
@@ -155,6 +156,10 @@ const unitAliases: Record<string, Unit> = {
   "meters per second": "m/s",
   "kilometer per hour": "km/h",
   "kilometers per hour": "km/h",
+  "mph": "m/h",
+  "miles per hour": "m/h",
+  "knot": "knot",
+  "knots": "knot",
 };
 
 // ===========================
