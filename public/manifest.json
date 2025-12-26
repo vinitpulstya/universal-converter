@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Universal Converter",
-  "version": "0.0.1",
-  "description": "Convert weight, size, length, time and more on any webpage",
+  "version": "1.0.0",
+  "description": "Convert weight, length, time and more by selection or typing",
   "permissions": [
     "storage"
   ],
@@ -26,6 +26,7 @@
   ],
   "icons": {
     "16": "icon16.png",
+    "32": "icon32.png",
     "48": "icon48.png",
     "128": "icon128.png"
   }

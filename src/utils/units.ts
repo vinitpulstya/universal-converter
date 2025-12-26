@@ -45,6 +45,7 @@ const unitAliases: Record<string, Unit> = {
   meters: "m",
   metre: "m",
   metres: "m",
+  mtr: "m",
   kilometer: "km",
   kilometers: "km",
   kilometre: "km",
@@ -65,6 +66,7 @@ const unitAliases: Record<string, Unit> = {
 
   // --- TEMPERATURE ---
   celsius: "C",
+  "°c": "C",
   centigrade: "C",
   fahrenheit: "F",
   kelvin: "K",
